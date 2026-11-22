@@ -1,0 +1,6 @@
+Tiempo,Experimento,Resultado,Bug candidato
+00-05,Calcular valor exacto de 5 productos,Diferencia 2586200 COP vs 2586.2 COP,BUG-08
+05-10,Contar filas del CSV base,5 productos contra 3 filas de datos,BUG-09
+10-15,Crear producto temporal con coma y comillas,Se crea correctamente pero la exportacion no escapa,CSV sin escape
+15-20,Exportar con 6 productos conocidos,4 filas de datos y temporal omitido,BUG-09
+20-25,Revisar integridad de campos del CSV,Campos con coma pueden partir columnas al abrir,CSV sin escape
