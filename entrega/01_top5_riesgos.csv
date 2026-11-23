@@ -1,6 +1,0 @@
-Orden,Impacto de negocio,Probabilidad,Modulo,Riesgo,Idea de prueba 1,Idea de prueba 2,Justificacion
-1,Alto,Alta,Movimientos,OUT permite stock negativo,Con stock 3 registrar OUT de 10 y verificar rechazo con stock 3,Registrar OUT de 3 y verificar stock 0,Causa entregas imposibles y rompe la reconciliacion fisica
-2,Alto,Alta,Movimientos / Integridad,ADJUST suma en vez de fijar el conteo,Con stock 22 registrar ADJUST 5 y verificar stock 5,Recargar y confirmar movimiento con el stock final,Reproduce directamente diferencias durante conteos fisicos
-3,Alto,Alta,Dashboard / Reporting,Valor de inventario dividido entre 1000,Calcular total exacto de stock x precio y compararlo,Modificar stock y precio y recalcular el dashboard,Distorsiona decisiones administrativas y auditoria
-4,Alto,Alta,Exportacion / Auditoria,CSV omite los ultimos dos productos y no escapa caracteres,Exportar e contar todas las filas contra productos activos,Incluir comas o comillas y abrir el CSV en Excel,Puede perder registros en respaldos y conciliaciones institucionales
-5,Alto,Alta,Productos / Datos,SKU duplicado y valores negativos aceptados,Crear SKU existente y verificar rechazo,Crear precio -100 stock -5 minStock -1 y verificar rechazo,Evita propagacion de datos invalidos a alertas reportes y exportacion
