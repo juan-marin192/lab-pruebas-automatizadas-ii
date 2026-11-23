@@ -15,8 +15,8 @@
 
 | # | Nombre completo |
 |---|-----------------|
-| 1 | |
-| 2 | |
+| 1 | María Fernanda Holguín Hernández |
+| 2 | Juan José Marín Monsalve |
 | 3 | |
 
 ---

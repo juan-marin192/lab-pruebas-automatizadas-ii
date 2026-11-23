@@ -2,6 +2,7 @@
   "name": "stockpascual-automation",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Pruebas E2E Playwright — StockPascual (lab)",
   "scripts": {
     "test": "playwright test",
@@ -9,6 +10,7 @@
     "report": "playwright show-report"
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.1"
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^26.6.6"
   }
 }
