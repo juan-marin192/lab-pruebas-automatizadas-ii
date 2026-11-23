@@ -1,10 +1,10 @@
 # Evaluación crítica del uso de IA — Laboratorio Pruebas Automatizadas II + IA
 
-Completar y guardar en `evidencias/paso6_evaluacion_ia/`. Al final, copiar la versión definitiva a `entrega/05_evaluacion_ia.md`.
+**Equipo:** María Fernanda Holguín Hernández y Juan José Marín Monsalve.
 
 ## 1. Prompts clave utilizados
 
-Pegar 2 o 3 prompts usados, o indicar qué archivos de `/prompts` se adaptaron:
+Prompts usados (adaptados de `prompts/01_analisis_riesgos.md`, `02_casos_de_prueba.md` y `03_exploracion_guiada.md`):
 
 1. ### **Prompt 1 (Análisis de Riesgos - Paso 2):**
 "Actúa como QA Lead senior. Revisa el documento de Requisitos de StockPascual MVP. Identifica los 10 principales riesgos de calidad ordenados por prioridad (P0, P1, P2), indicando el módulo afectado, el impacto en la operación del almacén de la universidad y una propuesta de mitigación."
@@ -26,12 +26,17 @@ Propuso misiones claras para tensionar la consistencia entre los movimientos `AD
 
 -1. **Comportamiento del movimiento `ADJUST`:** En los primeros casos sugeridos, la IA asumió que `ADJUST` debía sumar/restar unidades como un movimiento `IN`/`OUT`, en lugar de **establecer el valor absoluto del conteo físico** como exigían los requisitos institucionales.
 
+2. **Prioridad del XSS:** en el análisis de riesgos puso el XSS en el último lugar, con impacto "Bajo". Al probarlo en la app, el nombre `<img src=x onerror=alert(1)>` se ejecuta en el selector de movimientos (BUG-10). Subestimó un criterio de aceptación.
+3. **Regla de productos inactivos (riesgo 9):** planteó un riesgo sobre productos "inactivos o eliminados" que no aparece en los requisitos; solo se pide mostrar "productos activos". No lo incluimos en el Top 5.
+
 ## 4. Riesgos o bugs que la IA no vio y el equipo sí encontró
 
 - 1. **Gravedad del contexto institucional:**
 No dimensionó el impacto legal y administrativo que tiene para Recursos Físicos del Pascual Bravo un reporte en CSV incompleto durante una auditoría universitaria.
-- 2. **Flujos complejos de UI combinados:**
-No contempló la desincronización que ocurre al ejecutar múltiples movimientos `OUT` simultáneos desde pestañas o usuarios distintos.
+- 2. **Validación incompleta del alta y la edición de productos:**
+La IA habló de precios y stocks negativos, pero no vio que el servidor solo valida el nombre. Probamos que acepta SKU vacío, precio no numérico (queda `null`) y stock -5 (BUG-04), y que al editar acepta precio -5 (BUG-11).
+- 3. **Impacto en la trazabilidad al eliminar productos:**
+Al borrar un producto con movimientos, estos quedan como "(producto eliminado)" y sin SKU (BUG-05). La IA lo dejó en el puesto 7 del análisis, fuera del Top 5, sin dimensionar el efecto en auditoría.
 
 ## 5. Falsos positivos: la IA dijo “bug” y no lo era
 
@@ -50,4 +55,8 @@ No contempló la desincronización que ocurre al ejecutar múltiples movimientos
 
 Un equipo de QA compuesto 100% por Inteligencia Artificial **no es viable ni recomendable** para la Institución Universitaria Pascual Bravo. 
 Aunque la IA demostró ser un asistente extraordinario para acelerar la redacción de casos de prueba y sugerir listas iniciales de riesgos, carece del **criterio humano, contexto del dominio e intuición técnica** necesarios para validar el software real. 
-La capacidad del ingeniero de QA para cuestionar los requisitos, comprender la operación física del almacén universitario, validar los hallazgos en la aplicación en vivo y descartar falsos positivos. La estrategia idónea para la universidad es implementar un enfoque **AI-Assisted QA**, donde el profesional de calidad utiliza la IA para automatizar tareas repetitivas y acelerar la documentación, pero mantiene el control absoluto sobre la validación, la exploración y la toma de decisiones.
+El criterio humano marcó la diferencia en varios puntos concretos del laboratorio. La IA propuso el análisis de riesgos, pero fue el equipo quien comprobó en la app que el XSS sí se ejecuta, algo que ella había clasificado como riesgo bajo. También fue el equipo quien calculó a mano el valor del inventario (2.586.200 COP) y vio que el dashboard mostraba 2.586,2, quien contó las filas del CSV (5 productos y solo 3 filas) y quien descartó recomendaciones fuera de alcance, como la autenticación multifactor, que no es un bug de este MVP.
+
+La IA tampoco conoce la operación del almacén: no sabe que una salida a un laboratorio que deja el stock en -7 significa entregar insumos que no existen, ni que un CSV incompleto es grave para una auditoría institucional. Además, un bug sugerido por la IA solo cuenta si se reprodujo en la aplicación, con pasos y captura, y eso requiere a una persona que ejecute, observe y decida.
+
+La estrategia adecuada para el Pascual Bravo es **AI-Assisted QA**: la IA acelera la redacción de riesgos, casos y código de Playwright, y el profesional de calidad conserva la validación, la exploración, la priorización y la responsabilidad del resultado. Un QA 100% reemplazado por IA no es recomendable.
