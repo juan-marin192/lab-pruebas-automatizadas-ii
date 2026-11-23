@@ -34,7 +34,7 @@ Propuso misiones claras para tensionar la consistencia entre los movimientos `AD
 - 1. **Gravedad del contexto institucional:**
 No dimensionó el impacto legal y administrativo que tiene para Recursos Físicos del Pascual Bravo un reporte en CSV incompleto durante una auditoría universitaria.
 - 2. **Validación incompleta del alta y la edición de productos:**
-La IA habló de precios y stocks negativos, pero no vio que el servidor solo valida el nombre. Probamos que acepta SKU vacío, precio no numérico (queda `null`) y stock -5 (BUG-04), y que al editar acepta precio -5 (BUG-11).
+La IA habló de precios y stocks negativos, pero no vio que el servidor solo valida el nombre. Probamos que acepta SKU vacío, precio vacío (queda en 0) y stock -5 (BUG-04), y que al editar acepta precio -5 (BUG-11).
 - 3. **Impacto en la trazabilidad al eliminar productos:**
 Al borrar un producto con movimientos, estos quedan como "(producto eliminado)" y sin SKU (BUG-05). La IA lo dejó en el puesto 7 del análisis, fuera del Top 5, sin dimensionar el efecto en auditoría.
 
