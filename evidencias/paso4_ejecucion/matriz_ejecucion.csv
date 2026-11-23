@@ -1,11 +1,11 @@
 Case_ID,Titulo,Prioridad,Ejecutado_por,Resultado,Bug_relacionado,Notas
-TC-AUTH-01,Iniciar sesion como administrador,P0,IA/Copilot,Pass,,Login admin/Admin123! devolvio 200 y abrio Dashboard con controles de administrador.
-TC-AUTH-02,Iniciar sesion como operador,P0,IA/Copilot,Pass,,Login operador/Oper123! devolvio 200 y oculto controles data-admin-only.
-TC-PROD-04,Rechazar SKU duplicado,P0,IA/Copilot,Fail,BUG-02,POST con SKU CAB-USB-01 devolvio 201 y creo un segundo producto.
-TC-PROD-05,Rechazar precio negativo,P0,IA/Copilot,Fail,BUG-03,POST con precio -1 devolvio 201 y creo el producto con precio negativo.
-TC-OUT-01,OUT mayor al stock no debe ser negativo,P0,IA/Copilot,Fail,BUG-06,OUT de 10 sobre stock 3 devolvio 201 y dejo el producto con stock -7.
-TC-ADJ-01,ADJUST establece en vez de sumar,P0,IA/Copilot,Fail,BUG-07,ADJUST de 5 sobre stock 22 devolvio 201 y dejo stock 27 en vez de 5.
-TC-DASH-01,Calcular valor exacto del inventario,P0,IA/Copilot,Fail,BUG-08,El valor exacto calculado fue 2586200 COP y el Dashboard respondio 2586.2 COP.
-TC-CSV-01,CSV contiene todos los productos,P0,IA/Copilot,Fail,BUG-09,Habia 5 productos pero el CSV contenia solo 3 filas de datos; no incluyo MON-24-04 ni AUD-BT-05.
-TC-ROLE-01,Operador no crea productos,P0,IA/Copilot,Pass,,POST de operador devolvio 403 Solo admin puede realizar esta accion.
-TC-XSS-01,No ejecutar HTML almacenado,P0,IA/Copilot,Fail,BUG-10,El payload <img src=x onerror=alert(1)> quedo disponible sin escapar en el innerHTML del select de movimientos y ejecuto alert(1).
+TC-AUTH-01,Iniciar sesion como administrador,P0,Equipo (Juan y Maria),Pass,,Login admin/Admin123! devolvio 200 y abrio Dashboard con controles de administrador.
+TC-AUTH-02,Iniciar sesion como operador,P0,Equipo (Juan y Maria),Pass,,Login operador/Oper123! devolvio 200 y oculto controles data-admin-only.
+TC-PROD-04,Rechazar SKU duplicado,P0,Equipo (Juan y Maria),Fail,BUG-02,POST con SKU CAB-USB-01 devolvio 201 y creo un segundo producto.
+TC-PROD-05,Rechazar precio negativo,P0,Equipo (Juan y Maria),Fail,BUG-03,POST con precio -1 devolvio 201 y creo el producto con precio negativo.
+TC-OUT-01,OUT mayor al stock no debe ser negativo,P0,Equipo (Juan y Maria),Fail,BUG-06,OUT de 10 sobre stock 3 devolvio 201 y dejo el producto con stock -7. Producto usado: MON-24-04 (3 - 10 = -7). El mismo defecto se documenta en BUG-06 con MOU-WL-02 (8 - 10 = -2).
+TC-ADJ-01,ADJUST establece en vez de sumar,P0,Equipo (Juan y Maria),Fail,BUG-07,ADJUST de 5 sobre stock 22 devolvio 201 y dejo stock 27 en vez de 5.
+TC-DASH-01,Calcular valor exacto del inventario,P0,Equipo (Juan y Maria),Fail,BUG-08,El valor exacto calculado fue 2586200 COP y el Dashboard respondio 2586.2 COP.
+TC-CSV-01,CSV contiene todos los productos,P0,Equipo (Juan y Maria),Fail,BUG-09,Habia 5 productos pero el CSV contenia solo 3 filas de datos; no incluyo MON-24-04 ni AUD-BT-05.
+TC-ROLE-01,Operador no crea productos,P0,Equipo (Juan y Maria),Pass,,POST de operador devolvio 403 Solo admin puede realizar esta accion.
+TC-XSS-01,No ejecutar HTML almacenado,P0,Equipo (Juan y Maria),Fail,BUG-10,El payload <img src=x onerror=alert(1)> quedo disponible sin escapar en el innerHTML del select de movimientos y ejecuto alert(1).
