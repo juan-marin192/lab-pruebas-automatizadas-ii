@@ -17,7 +17,6 @@
 |---|-----------------|
 | 1 | María Fernanda Holguín Hernández |
 | 2 | Juan José Marín Monsalve |
-| 3 | |
 
 ---
 
